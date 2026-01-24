@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('avaliacoes', function (Blueprint $table) {
             $table->id();
-            $table->tinyint('nota');
+            $table->integer('nota');
             $table->foreignId('user_id');
             $table->foreignId('produtos_id');
             $table->timestamps();
