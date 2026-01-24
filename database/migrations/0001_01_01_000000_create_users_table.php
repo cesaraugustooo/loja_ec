@@ -17,6 +17,15 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('telefone');
+            $table->enum  ('tipo', [
+                'comprador',
+                 'vendedor',
+            ])->default('compador');
+            $table->enum('atividade', [
+                'ativo',
+                'inativo'
+            ])->default('ativo');
             $table->rememberToken();
             $table->timestamps();
         });
