@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum  ('tipo', [
                 'comprador',
                  'vendedor',
-            ])->default('compador');
+            ])->default('comprador');
             $table->enum('atividade', [
                 'ativo',
                 'inativo'
