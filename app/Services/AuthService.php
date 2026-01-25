@@ -2,8 +2,11 @@
 
 namespace App\Services;
 
+use App\Exceptions\InvalidCredentialsException;
+use App\Exceptions\UserNotFoundException;
 use App\Interfaces\IUserRepository;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AuthService {
 
@@ -17,4 +20,18 @@ class AuthService {
         return $user;
     }
 
+    public function login($cred) {
+        if(Auth::attempt($cred)){
+            
+            $user = $this->userRepository->getByEmail($cred['email']); 
+
+            if(!$user) {
+                throw new UserNotFoundException();
+            }
+
+            return $user->createToken('api')->plainTextToken;
+        }else{
+            throw new InvalidCredentialsException();
+        }
+    }
 }
