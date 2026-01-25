@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class categorias extends Model
 {
-    public $fillable = [];
+    public $fillable = ['nome', 'produtos_id'];
 }
