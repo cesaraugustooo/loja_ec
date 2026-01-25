@@ -7,4 +7,6 @@ use Ramsey\Collection\Collection;
 
 interface IProdutoInterface {
     public function create($dados): produtos;
+
+    public function view($id): produtos;
 }

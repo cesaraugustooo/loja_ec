@@ -13,5 +13,10 @@ class ProdutoService {
 
     public function create($dados){
         $produto = $this->produtoRepository->create($dados);
+        return $produto;
+    }
+
+    public function view($id) {
+        return $this->produtoRepository->view($id);
     }
 }
