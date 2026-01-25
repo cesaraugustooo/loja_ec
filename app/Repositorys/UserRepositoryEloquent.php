@@ -7,9 +7,9 @@ use App\Models\User;
 
 class UserRepositoryEloquent implements IUserRepository {
 
-    public function getById($id): ?User
+    public function getByEmail($email): ?User
     {
-        return User::find($id);
+        return User::where('email',$email)->first();
     }
 
     public function create($data): User
