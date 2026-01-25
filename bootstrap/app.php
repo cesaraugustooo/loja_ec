@@ -1,5 +1,8 @@
 <?php
 
+use App\Exceptions\ApiExceptions;
+use App\Exceptions\InvalidCredentialsException;
+use App\Exceptions\UserNotFoundException;
 use App\Http\Middleware\ForceJson;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -16,5 +19,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->prependToGroup('api',[ForceJson::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->render(function(ApiExceptions $e){
+            return response()->json([
+                "error" => $e->getMessage(),
+                "code" => $e->getCode()
+            ],$e->getCode());
+        });
     })->create();
