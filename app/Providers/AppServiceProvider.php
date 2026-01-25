@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Interfaces\IUserRepository;
 use App\Interfaces\IVendedorInterface;
+use App\Interfaces\IProdutoInterface;
 use App\Repositorys\UserRepositoryEloquent;
 use App\Repositorys\VendedorRepositoryEnloquent;
+use App\Repositorys\ProdutoRepositoryEnloquent;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(IUserRepository::class, UserRepositoryEloquent::class);
         $this->app->bind(IVendedorInterface::class, VendedorRepositoryEnloquent::class);
+        $this->app->bind(IProdutoInterface::class, ProdutoRepositoryEnloquent::class);
     }
 
     /**
