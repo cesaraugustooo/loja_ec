@@ -6,12 +6,12 @@ use App\Models\produtos;
 
 use Illuminate\Database\Eloquent\Model;
 
-class vendedores extends Model
+class Vendedor extends Model
 {
     public $table = 'vandedores';
     public $fillable = ['user_id', 'loja_nome', 'atividade'];
 
     public function produtos(){
-        return $this->hasMany(produtos::class, 'vendedor_id');  
+        return $this->hasMany(Produto::class, 'vendedor_id');  
     }
 }
