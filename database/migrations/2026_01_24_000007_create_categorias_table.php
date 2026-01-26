@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->foreignId('produtos_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

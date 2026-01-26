@@ -15,10 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('loja_nome');
-            $table->enum('atividade', [
-                'ativo',
-                'inativo'
-            ])->default('ativo');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

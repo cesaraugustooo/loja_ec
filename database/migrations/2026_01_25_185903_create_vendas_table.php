@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('vendedores_id');
             $table->foreignId('user_id');
             $table->foreignId('pedidos_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

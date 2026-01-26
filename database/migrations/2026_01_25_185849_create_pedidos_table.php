@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('quantidade');
             $table->float('preco');
             $table->enum('status', ['aguardando','pago', 'enviado','cancelado'])->default('aguardando');
-            $table->enum('atividade', ['ativo','inativo'])->default('ativo');
+            $table->softDeletes();
             $table->foreignId('user_id');
             $table->foreignId('produtos_id');
             $table->timestamps();

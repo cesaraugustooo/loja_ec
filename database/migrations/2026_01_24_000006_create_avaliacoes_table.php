@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('nota');
             $table->foreignId('user_id');
             $table->foreignId('produtos_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
