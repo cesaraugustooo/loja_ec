@@ -14,4 +14,14 @@ class Produto extends Model
     public function vendedor() {
         return $this->belongsTo(Vendedor::class,'vendedor_id');
     }
+
+    public function categoria() {
+        return $this->HasMany(Categoria::class);
+    }
+
+        public function avaliacao() {
+        return $this->hasMany(Avaliacao::class,'');
+    }
+
+
 }

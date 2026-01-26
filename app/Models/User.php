@@ -47,4 +47,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function venda(){
+        return $this->belongsTo(Venda::class);
+    }
+    public function Pedido(){
+        return $this->HasOne(Pedido::class);
+    }
 }

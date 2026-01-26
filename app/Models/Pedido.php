@@ -10,4 +10,11 @@ class Pedido extends Model
     use SoftDeletes;
 
     public $fillable = ['quantidade', 'preco', 'status', 'atividade', 'user_id', 'produtos_id'];
+
+    public function venda(){
+        return $this->hasMany(Venda::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

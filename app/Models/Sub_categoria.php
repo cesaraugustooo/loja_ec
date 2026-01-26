@@ -10,4 +10,9 @@ class Sub_categoria extends Model
     use SoftDeletes;
 
     public $fillable = ['nome', 'categorias_id'];
+
+        public function categoria(){
+        return $this->belongsTo(Categoria::class);
+    }
 }
+

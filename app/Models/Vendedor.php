@@ -17,4 +17,8 @@ class Vendedor extends Model
     public function produtos(){
         return $this->hasMany(Produto::class, 'vendedor_id');  
     }
+
+        public function vendedor(){
+        return $this->belongsTo(Venda::class);
+    }
 }

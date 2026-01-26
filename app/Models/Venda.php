@@ -9,5 +9,16 @@ class Venda extends Model
 {
     use SoftDeletes;
 
-    public $fillable = ['quantidade', 'preco', 'produtos_id', 'vendedores_id', 'user_id', 'pedidos_id'];
+    public $fillable = ['quantidade', 'preco','vendedores_id', 'user_id', 'pedidos_id'];
+
+    public function user(){
+        return $this->hasOne(User::class);
+    }
+
+     public function vendedor(){
+        return $this->hasOne(Vendedor::class);
+    }
+    public function pedidos(){
+        return $this->belongsTo(Pedidos::class);
+    }
 }
