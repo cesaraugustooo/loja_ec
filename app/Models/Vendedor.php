@@ -11,7 +11,7 @@ class Vendedor extends Model
 {
     use SoftDeletes;
 
-    public $table = 'vandedores';
+    public $table = 'vendedores';
     public $fillable = ['user_id', 'loja_nome', 'atividade'];
 
     public function produtos(){

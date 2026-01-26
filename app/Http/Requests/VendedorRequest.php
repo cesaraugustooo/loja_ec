@@ -23,7 +23,6 @@ class VendedorRequest extends FormRequest
     {
         return [
             "loja_nome" => "required|string",
-            "atividade" => "required|in:ativo,inativo"
         ];
     }
 }

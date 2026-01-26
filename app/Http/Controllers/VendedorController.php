@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\VendedorRequest;
 use App\Models\Vendedor;
+use App\Repositorys\VendedorRepositoryEnloquent;
 use App\Services\VendedorService;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,9 @@ class VendedorController extends Controller
         return response()->json($vendedor);
     }
 
-    public function view(Vendedor $vendedor) {
-        return response()->json($vendedor);
+    public function view(Vendedor $vendedor, VendedorRepositoryEnloquent $vendedorService) {
+        $vendedorResponse = $vendedorService->view($vendedor);
+
+        return response()->json($vendedorResponse);
     }
 }

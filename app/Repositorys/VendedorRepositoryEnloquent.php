@@ -14,6 +14,6 @@ class VendedorRepositoryEnloquent implements IVendedorInterface {
 
     public function view($id): Vendedor
     {
-        return Vendedor::with('produtos')->find($id);
+        return $id->load('produtos');
     }
 }
