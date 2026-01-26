@@ -2,11 +2,11 @@
 
 namespace App\Interfaces;
 
-use App\Models\produtos;
+use App\Models\Produto;
 use Ramsey\Collection\Collection;
 
 interface IProdutoInterface {
-    public function create($dados): produtos;
+    public function create($dados): Produto;
 
-    public function view($id): produtos;
+    public function view($id): Produto;
 }

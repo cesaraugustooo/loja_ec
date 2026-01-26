@@ -3,16 +3,16 @@
 namespace App\Repositorys;
 
 use App\Interfaces\IProdutoInterface;
-use App\Models\produtos;
+use App\Models\Produto;
 
 
 class ProdutoRepositoryEloquent implements IProdutoInterface {
-    public function create($dados): produtos{
-        return produtos::create($dados);
+    public function create($dados): Produto{
+        return Produto::create($dados);
     }
 
-        public function view($id): produtos
+        public function view($id): Produto
     {
-        return produtos::find($id);
+        return Produto::find($id);
     }
 }

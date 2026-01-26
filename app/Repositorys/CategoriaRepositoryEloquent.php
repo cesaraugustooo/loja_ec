@@ -3,15 +3,15 @@
 namespace App\Repositorys;
 
 use App\Interfaces\ICategoriaInterface;
-use App\Models\categorias;
+use App\Models\Categoria;
 
 class CategoriaRepositoryEloquent implements ICategoriaInterface {
-    public function create($dados): categorias{
-        return categorias::create($dados);
+    public function create($dados): Categoria{
+        return Categoria::create($dados);
     }
 
-        public function view($id): categorias
+        public function view($id): Categoria
     {
-        return categorias::find($id);
+        return Categoria::find($id);
     }
 }

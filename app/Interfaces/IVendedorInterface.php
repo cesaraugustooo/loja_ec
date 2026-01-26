@@ -2,10 +2,10 @@
 
 namespace App\Interfaces;
 
-use App\Models\vendedores;
+use App\Models\Vendedor;
 use Ramsey\Collection\Collection;
 
 interface IVendedorInterface {
-    public function create($dados): vendedores;
-    public function view($id): vendedores;
+    public function create($dados): Vendedor;
+    public function view($id): Vendedor;
 }

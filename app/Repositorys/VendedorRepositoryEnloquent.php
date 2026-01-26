@@ -3,17 +3,17 @@
 namespace App\Repositorys;
 
 use App\Interfaces\IVendedorInterface;
-use App\Models\vendedores;
+use App\Models\Vendedor;
 
 class VendedorRepositoryEnloquent implements IVendedorInterface {
 
-    public function create($dados): vendedores
+    public function create($dados): Vendedor
     {   
-        return vendedores::create($dados);;
+        return Vendedor::create($dados);;
     }
 
-    public function view($id): vendedores
+    public function view($id): Vendedor
     {
-        return vendedores::with('produtos')->find($id);
+        return Vendedor::with('produtos')->find($id);
     }
 }

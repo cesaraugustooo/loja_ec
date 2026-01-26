@@ -2,11 +2,11 @@
 
 namespace App\Interfaces;
 
-use App\Models\categorias;
+use App\Models\Categoria;
 
 
 interface ICategoriaInterface {
-    public function create($dados): categorias;
+    public function create($dados): Categoria;
 
-    public function view($id): categorias;
+    public function view($id): Categoria;
 }
