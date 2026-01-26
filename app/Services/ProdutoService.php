@@ -2,8 +2,9 @@
 
 namespace App\Services;
 
+use App\Exceptions\InvalidCreateProductsException;
 use App\Interfaces\IProdutoInterface;
-
+use Exception;
 
 class ProdutoService {
     public function __construct(
@@ -12,11 +13,10 @@ class ProdutoService {
 
 
     public function create($dados){
-        $produto = $this->produtoRepository->create($dados);
-        return $produto;
-    }
-
-    public function view($id) {
-        return $this->produtoRepository->view($id);
+        try{
+            $produto = $this->produtoRepository->create($dados);
+        }catch(Exception $e){
+            throw new InvalidCreateProductsException();
+        }
     }
 }
