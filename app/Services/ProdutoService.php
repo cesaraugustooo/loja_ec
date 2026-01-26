@@ -19,4 +19,8 @@ class ProdutoService {
             throw new InvalidCreateProductsException();
         }
     }
+
+   public function view($id) {
+        return $this->produtoRepository->view($id);
+    }
 }
