@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\VendedorRequest;
+use App\Models\vendedores;
 use App\Services\VendedorService;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,10 @@ class VendedorController extends Controller
 
         $vendedor = $vendedorService->create($dados);
 
+        return response()->json($vendedor);
+    }
+
+    public function view(vendedores $vendedor) {
         return response()->json($vendedor);
     }
 }
