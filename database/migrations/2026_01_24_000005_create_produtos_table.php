@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('descricao');
             $table->float('preco');
             $table->integer('estoque');
+            $table->foreignId('vendedor_id');
                      $table->enum('atividade', [
                 'ativo',
                 'inativo'
