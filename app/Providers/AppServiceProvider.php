@@ -8,12 +8,14 @@ use App\Interfaces\IProdutoInterface;
 use App\Interfaces\ICategoriaInterface;
 use App\Interfaces\ISubCategoriaInterface;
 use App\Interfaces\IAvaliacaoInterface;
+use App\Interfaces\IPedidoInterface;
 use App\Repositorys\UserRepositoryEloquent;
 use App\Repositorys\VendedorRepositoryEnloquent;
 use App\Repositorys\ProdutoRepositoryEloquent;
 use App\Repositorys\CategoriaRepositoryEloquent;
 use App\Repositorys\SubCategoriaRepositoryEloquent;
 use App\Repositorys\AvaliacaoRepositoryEloquent;
+use App\Repositorys\PedidoRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -30,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ICategoriaInterface::class, CategoriaRepositoryEloquent::class);
         $this->app->bind(ISubCategoriaInterface::class, SubCategoriaRepositoryEloquent::class);
         $this->app->bind(IAvaliacaoInterface::class, AvaliacaoRepositoryEloquent::class);
+        $this->app->bind(IPedidoInterface::class, PedidoRepositoryEloquent::class);
     }
 
     /**
