@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('descricao');
             $table->float('preco');
             $table->integer('estoque');
+            $table->foreignId('vendedor_id')->constrained('vendedores');
             $table->softDeletes();
             $table->timestamps();
         });
