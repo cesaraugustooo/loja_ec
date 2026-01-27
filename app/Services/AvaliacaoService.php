@@ -18,4 +18,9 @@ class AvaliacaoService {
     public function view($id) {
         return $this->avaliacaoRepository->view($id);
     }
+
+        public function atualizar(int $id, array $dados)
+    {
+        return $this->avaliacaoRepository->update($id, $dados);
+    }
 }

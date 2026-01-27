@@ -15,4 +15,12 @@ class AvaliacaoRepositoryEloquent implements IAvaliacaoInterface {
     {
         return Avaliacao::find($id);
     }
+
+    public function update(int $id, array $dados): Avaliacao{
+        $avaliacao = Avaliacao::findOrFail($id);
+
+        $avaliacao->update($dados);
+
+        return $avaliacao;
+    }
 }

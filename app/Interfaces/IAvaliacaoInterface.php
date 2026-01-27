@@ -10,4 +10,6 @@ interface IAvaliacaoInterface {
     public function create($dados): Avaliacao;
 
     public function view($id): Avaliacao;
+
+    public function update(int $id, array $dados): Avaliacao;
 }
