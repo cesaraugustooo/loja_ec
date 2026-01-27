@@ -18,4 +18,9 @@ class VendedorService {
     public function view($id) {
         return $this->vendedorRepository->view($id);
     }
+
+            public function atualizar(int $id, array $dados)
+    {
+        return $this->vendedorRepository->update($id, $dados);
+    }
 }
