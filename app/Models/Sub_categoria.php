@@ -9,6 +9,8 @@ class Sub_categoria extends Model
 {
     use SoftDeletes;
 
+    protected $table = "sub-categorias";
+
     public $fillable = ['nome', 'categorias_id'];
 
         public function categoria(){
