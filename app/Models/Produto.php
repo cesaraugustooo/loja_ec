@@ -9,7 +9,7 @@ class Produto extends Model
 {
     use SoftDeletes;
 
-    public $fillable = ['nome', 'descricoes', 'preco', 'estoque', 'vendedor_id', 'atividade'];
+    public $fillable = ['nome', 'descricao', 'preco', 'estoque', 'vendedor_id','sub_categorias_id'];
 
     public function vendedor() {
         return $this->belongsTo(Vendedor::class,'vendedor_id');
@@ -19,9 +19,8 @@ class Produto extends Model
         return $this->HasMany(Categoria::class);
     }
 
-        public function avaliacao() {
-        return $this->hasMany(Avaliacao::class,'');
+    public function avaliacao() {
+        return $this->hasMany(Avaliacao::class,'produtos_id');
     }
-
 
 }

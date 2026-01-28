@@ -15,6 +15,8 @@ class ProdutoService {
     public function create($dados){
         try{
             $produto = $this->produtoRepository->create($dados);
+
+            return $produto; 
         }catch(Exception $e){
             throw new InvalidCreateProductsException();
         }
