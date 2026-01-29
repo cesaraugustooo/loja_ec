@@ -18,7 +18,15 @@ class Vendedor extends Model
         return $this->hasMany(Produto::class, 'vendedor_id');  
     }
 
-        public function vendedor(){
+    public function vendedor(){
         return $this->belongsTo(Venda::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    protected $hidden = [
+        'user_id'
+    ];
 }
