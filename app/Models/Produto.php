@@ -15,11 +15,11 @@ class Produto extends Model
         return $this->belongsTo(Vendedor::class,'vendedor_id');
     }
 
-    public function categoria() {
-        return $this->HasMany(Categoria::class);
+    public function sub_categoria() {
+        return $this->belongsTo(Sub_categoria::class,'sub_categorias_id');
     }
 
-    public function avaliacao() {
+    public function avaliacoes() {
         return $this->hasMany(Avaliacao::class,'produtos_id');
     }
 
