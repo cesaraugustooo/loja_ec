@@ -9,4 +9,6 @@ interface IProdutoInterface {
     public function create($dados): Produto;
 
     public function view($id): Produto;
+
+    public function update(Produto $produto, $dados): Produto;
 }

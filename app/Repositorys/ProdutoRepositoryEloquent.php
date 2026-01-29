@@ -18,4 +18,11 @@ class ProdutoRepositoryEloquent implements IProdutoInterface {
     {
         return Produto::find($id);
     }
+
+    public function update(Produto $produto, $dados): Produto{
+        $produto->update($dados);
+
+        return $produto;
+    }
+    
 }
