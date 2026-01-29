@@ -13,8 +13,8 @@ class Sub_categoria extends Model
 
     public $fillable = ['nome', 'categorias_id'];
 
-        public function categoria(){
-        return $this->belongsTo(Categoria::class);
+    public function categoria(){
+        return $this->belongsTo(Categoria::class, 'categorias_id');
     }
 }
 
