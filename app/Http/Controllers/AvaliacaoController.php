@@ -30,7 +30,7 @@ class AvaliacaoController extends Controller
         return response()->json($avaliacao->load(['nota','user_id','produto_id']),200);
     }
 
-    public function update(UpdateProdutos $request, AvaliacaoService $service, Avaliacao $avaliacao){
+    public function update(AvaliacaoRequest $request, AvaliacaoService $service, Avaliacao $avaliacao){
         
         $this->authorize('update',$avaliacao);
 
