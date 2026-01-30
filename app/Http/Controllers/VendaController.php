@@ -21,23 +21,23 @@ class VendaController
         $validated = $request->validated();
         $validated['user_id'] = $request->user()->id;
 
-        $avaliacao = $service->create($validated);
+        $venda = $service->create($validated);
 
-        return response()->json($avaliacao,201);
+        return response()->json($venda,201);
     }
     
 
-    public function view(Venda $avaliacao, VendaService $service){
-        return response()->json($avaliacao->load(['quantidade','vendedor_id','user_id', 'produto_id']),200);
+    public function view(Venda $venda, VendaService $service){
+        return response()->json($venda->load(['quantidade','vendedor_id','user_id', 'produto_id']),200);
     }
 
-    public function update(VendaRequest $request, VendaService $service, Venda $avaliacao){
+    public function update(VendaRequest $request, VendaService $service, Venda $venda){
         
-        $this->authorize('update',$avaliacao);
+        $this->authorize('update',$venda);
 
-        $avaliacao = $service->update($avaliacao,$request->validated());
+        $venda = $service->update($venda,$request->validated());
 
-        return response()->json($avaliacao,200);
+        return response()->json($venda,200);
     }
 }   
 
