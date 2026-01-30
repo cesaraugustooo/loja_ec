@@ -19,6 +19,6 @@ class Venda extends Model
         return $this->hasOne(Vendedor::class);
     }
     public function pedidos(){
-        return $this->belongsTo(Pedidos::class);
+        return $this->belongsTo(Pedido::class);
     }
 }
