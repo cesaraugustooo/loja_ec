@@ -15,4 +15,11 @@ class PedidoRepositoryEloquent implements IPedidoInterface {
     {
         return Pedido::find($id);
     }
+        public function update($id, $dados): Pedido{
+        $pedido = Pedido::findOrFail($id);
+
+        $pedido->update($dados);
+
+        return $pedido;
+    }
 }

@@ -8,5 +8,7 @@ interface IUserRepository {
     public function getByEmail($email): ?User;
     
     public function create($data): User;
+
+    public function update(int $id, array $dados): User;
 }
 

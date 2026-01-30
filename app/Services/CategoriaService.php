@@ -18,4 +18,9 @@ class CategoriaService {
     public function view($id) {
         return $this->categoriaRepository->view($id);
     }
+
+            public function atualizar(int $id, array $dados)
+    {
+        return $this->categoriaRepository->update($id, $dados);
+    }
 }

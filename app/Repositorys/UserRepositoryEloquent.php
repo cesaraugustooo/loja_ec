@@ -18,4 +18,12 @@ class UserRepositoryEloquent implements IUserRepository {
 
         return $user;
     }
+
+        public function update(int $id, array $dados): User{
+        $user = User::findOrFail($id);
+
+        $user->update($dados);
+
+        return $user;
+    }
 }

@@ -14,4 +14,12 @@ class SubCategoriaRepositoryEloquent implements ISubCategoriaInterface {
     {
         return Sub_categoria::find($id);
     }
+
+        public function update(int $id, array $dados): Sub_categoria{
+        $sub_categoria = Sub_categoria::findOrFail($id);
+
+        $sub_categoria->update($dados);
+
+        return $sub_categoria;
+    }
 }

@@ -18,4 +18,9 @@ class SubCategoriaService {
     public function view($id) {
         return $this->sub_categoriaRepository->view($id);
     }
+
+    public function atualizar(int $id, array $dados)
+    {
+        return $this->sub_categoriaRepository->update($id, $dados);
+    }
 }

@@ -18,4 +18,11 @@ class PedidoService {
     public function view($id) {
         return $this->pedidoRepository->view($id);
     }
+
+                public function atualizar(int $id, array $dados)
+    {
+        return $this->pedidoRepository->update($id, $dados);
+    }
+
+    
 }

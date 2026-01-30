@@ -14,4 +14,12 @@ class CategoriaRepositoryEloquent implements ICategoriaInterface {
     {
         return Categoria::find($id);
     }
+
+        public function update(int $id, array $dados): Categoria{
+        $categoria = Categoria::findOrFail($id);
+
+        $categoria->update($dados);
+
+        return $categoria;
+    }
 }

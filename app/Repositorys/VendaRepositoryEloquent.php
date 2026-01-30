@@ -16,4 +16,12 @@ class VendaRepositoryEloquent implements IVendaInterface {
     {
         return Venda::find($id);
     }
+
+        public function update(int $id, array $dados): Venda{
+        $venda = Venda::findOrFail($id);
+
+        $venda->update($dados);
+
+        return $venda;
+    }
 }

@@ -10,4 +10,6 @@ interface IPedidoInterface {
     public function create($dados): Pedido;
 
     public function view($id): Pedido;
+
+    public function update($id, $dados): Pedido;
 }
