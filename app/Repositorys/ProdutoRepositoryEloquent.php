@@ -16,7 +16,7 @@ class ProdutoRepositoryEloquent implements IProdutoInterface {
 
         public function view($id): Produto
     {
-        return Produto::find($id);
+        return Produto::findOrFail($id);
     }
 
     public function update(Produto $produto, $dados): Produto{
