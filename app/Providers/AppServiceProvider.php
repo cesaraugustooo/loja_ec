@@ -8,6 +8,7 @@ use App\Interfaces\IProdutoInterface;
 use App\Interfaces\ICategoriaInterface;
 use App\Interfaces\ISubCategoriaInterface;
 use App\Interfaces\IAvaliacaoInterface;
+use App\Interfaces\IGatewayPagamentoInterface as InterfacesIGatewayPagamentoInterface;
 use App\Interfaces\IPedidoInterface;
 use App\Interfaces\IVendaInterface;
 use App\Repositorys\UserRepositoryEloquent;
@@ -17,6 +18,7 @@ use App\Repositorys\CategoriaRepositoryEloquent;
 use App\Repositorys\SubCategoriaRepositoryEloquent;
 use App\Repositorys\AvaliacaoRepositoryEloquent;
 use App\Repositorys\PedidoRepositoryEloquent;
+use App\Repositorys\StripePaymentsRepository;
 use App\Repositorys\VendaRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IAvaliacaoInterface::class, AvaliacaoRepositoryEloquent::class);
         $this->app->bind(IPedidoInterface::class, PedidoRepositoryEloquent::class);
         $this->app->bind(IVendaInterface::class, VendaRepositoryEloquent::class);
+        $this->app->bind(InterfacesIGatewayPagamentoInterface::class, StripePaymentsRepository::class);
     }
 
     /**
