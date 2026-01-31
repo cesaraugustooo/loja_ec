@@ -9,7 +9,7 @@ class Pedido extends Model
 {
     use SoftDeletes;
 
-    public $fillable = ['quantidade', 'preco', 'status', 'atividade', 'user_id', 'produtos_id'];
+    public $fillable = ['quantidade', 'preco', 'status', 'user_id', 'produtos_id'];
 
     public function venda(){
         return $this->hasMany(Venda::class);
@@ -17,4 +17,12 @@ class Pedido extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function produto(){
+        return $this->belongsTo(Produto::class, 'produtos_id'); 
+    }
+
+    protected $hidden = [
+        'user_id'
+    ];
 }
