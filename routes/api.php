@@ -15,11 +15,11 @@ Route::get('/user', function (Request $request) {
 
 // Route::get('/pagamento-teste',[ProdutoController::class, 'teste']);
 
-// Route::get('/success',function(){
-//     return response()->json(['message' => 'success']);
-// })->name('success');
+Route::get('/success',function(){
+    return response()->json(['message' => 'success']);
+})->name('success');
 
 
-// Route::get('/cancel',function(){
-//     return response()->json(['message' => 'cancel']);
-// })->name('cancel');
+ Route::get('/cancel',function(){
+    return response()->json(['message' => 'cancel']);
+ })->name('cancel');
