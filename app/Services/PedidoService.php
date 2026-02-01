@@ -34,5 +34,7 @@ class PedidoService {
         return $this->pedidoRepository->update($id, $dados);
     }
 
-    
+    public function meusPedidos($user_id){
+        return $this->pedidoRepository->meusPedidos($user_id);
+    }
 }

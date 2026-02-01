@@ -16,4 +16,8 @@ class PedidoController extends Controller
 
         return response()->json($pedido);
     }
+
+    public function meusPedidos(Request $request, PedidoService $pedidoService){
+        return response()->json($pedidoService->meusPedidos($request->user()->id));
+    }
 }

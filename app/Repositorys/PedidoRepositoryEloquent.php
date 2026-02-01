@@ -22,4 +22,9 @@ class PedidoRepositoryEloquent implements IPedidoInterface {
 
         return $pedido;
     }
+
+    public function meusPedidos($user_id)
+    {
+        return Pedido::where('user_id', $user_id)->load('vendedor')->get();
+    }
 }

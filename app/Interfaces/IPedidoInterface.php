@@ -12,4 +12,6 @@ interface IPedidoInterface {
     public function view($id): Pedido;
 
     public function update($id, $dados): Pedido;
+
+    public function meusPedidos($user_id);
 }
