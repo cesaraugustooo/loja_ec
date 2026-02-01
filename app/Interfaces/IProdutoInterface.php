@@ -11,4 +11,6 @@ interface IProdutoInterface {
     public function view($id): Produto;
 
     public function update(Produto $produto, $dados): Produto;
+
+    public function destroy(Produto $produto): void;
 }

@@ -2,14 +2,20 @@
 
 namespace App\Repositorys;
 
+use App\Exceptions\NotVendedorUserException;
 use App\Interfaces\IProdutoInterface;
 use App\Models\Produto;
 use App\Models\Vendedor;
 
 class ProdutoRepositoryEloquent implements IProdutoInterface {
     public function create($dados): Produto{
-        $vendedor_id = Vendedor::where('user_id',$dados['user_id'])->first()->id;
-        $dados['vendedor_id'] = $vendedor_id;
+        $vendedor_id = Vendedor::where('user_id',$dados['user_id'])->first();
+
+        if(!$vendedor_id){
+            throw new NotVendedorUserException();
+        }
+
+        $dados['vendedor_id'] = $vendedor_id->id;
 
         return Produto::create($dados);
     }
@@ -24,5 +30,9 @@ class ProdutoRepositoryEloquent implements IProdutoInterface {
 
         return $produto;
     }
-    
+ 
+    public function destroy(Produto $produto): void {
+        $produto->delete();
+    }
+
 }

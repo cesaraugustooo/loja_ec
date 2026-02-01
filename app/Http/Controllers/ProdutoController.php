@@ -8,6 +8,8 @@ use App\Models\Produto;
 use App\Services\ProdutoService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 
 class ProdutoController extends Controller
 {
@@ -37,5 +39,14 @@ class ProdutoController extends Controller
 
         return response()->json($produto,200);
     }
+
+    public function destroy(Produto $produto, ProdutoService $produtoService){
+        $this->authorize('destroy',$produto);
+
+        $produtoService->destroy($produto);
+
+        return response()->noContent();
+    }
+
 }   
 

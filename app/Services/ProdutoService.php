@@ -16,13 +16,10 @@ class ProdutoService {
 
 
     public function create($dados){
-        try{
-            $produto = $this->produtoRepository->create($dados);
+        $produto = $this->produtoRepository->create($dados);
 
-            return $produto; 
-        }catch(Exception $e){
-            throw new InvalidCreateProductsException();
-        }
+        return $produto; 
+        
     }
 
    public function view($id) {
@@ -31,5 +28,9 @@ class ProdutoService {
 
     public function update(Produto $produto, $dados){
         return $this->produtoRepository->update($produto, $dados);
+    }
+
+    public function destroy(Produto $produto) {
+        $this->produtoRepository->destroy($produto);
     }
 }

@@ -18,4 +18,8 @@ class ProdutoPolicy
     public function update(User $user, Produto $produto){
        return $user->id === $produto->vendedor->user->id;
     }
+
+    public function destroy(User $user, Produto $produto){
+        return $user->id === $produto->vendedor->user->id;
+    }
 }
