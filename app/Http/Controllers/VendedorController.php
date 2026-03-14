@@ -27,4 +27,13 @@ class VendedorController extends Controller
 
         return response()->json($vendedorResponse);
     }
+
+    public function update(VendedorRequest $request, VendedorService $service, Vendedor $vendedor){
+        
+        $this->authorize('update',$vendedor);
+
+        $vendedor = $service->update($vendedor,$request->validated());
+
+        return response()->json($vendedor,200);
+    }
 }
