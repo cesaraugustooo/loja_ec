@@ -38,5 +38,14 @@ class AvaliacaoController extends Controller
 
         return response()->json($avaliacao,200);
     }
+
+
+    public function destroy(Avaliacao $avaliacao, AvaliacaoService $avaliacaoService){
+        $this->authorize('destroy',$avaliacao);
+
+        $avaliacaoService->destroy($avaliacao);
+
+        return response()->noContent();
+    }
 }   
 

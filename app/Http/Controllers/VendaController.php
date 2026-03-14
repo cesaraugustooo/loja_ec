@@ -39,5 +39,14 @@ class VendaController
 
         return response()->json($venda,200);
     }
+
+        public function destroy(Venda $venda, VendaService $vendaService){
+        $this->authorize('destroy',$venda);
+
+        $vendaService->destroy($venda);
+
+        return response()->noContent();
+    }
+
 }   
 

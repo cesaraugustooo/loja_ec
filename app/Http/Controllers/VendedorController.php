@@ -36,4 +36,13 @@ class VendedorController extends Controller
 
         return response()->json($vendedor,200);
     }
+
+        public function destroy(Vendedor $vendedor, VendedorService $vendedorService){
+        $this->authorize('destroy',$vendedor);
+
+        $vendedorService->destroy($vendedor);
+
+        return response()->noContent();
+    }
+
 }
