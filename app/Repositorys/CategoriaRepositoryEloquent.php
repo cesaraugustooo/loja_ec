@@ -22,4 +22,9 @@ class CategoriaRepositoryEloquent implements ICategoriaInterface {
 
         return $categoria;
     }
+
+        public function destroy(Categoria $categoria): void {
+        $categoria->delete();
+    }
+
 }

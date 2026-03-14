@@ -22,4 +22,9 @@ class SubCategoriaRepositoryEloquent implements ISubCategoriaInterface {
 
         return $sub_categoria;
     }
+
+        public function destroy(Sub_categoria $sub_categoria): void {
+        $sub_categoria->delete();
+    }
+
 }

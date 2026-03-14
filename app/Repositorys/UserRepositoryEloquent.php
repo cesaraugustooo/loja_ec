@@ -26,4 +26,9 @@ class UserRepositoryEloquent implements IUserRepository {
 
         return $user;
     }
+
+        public function destroy(User $user): void {
+        $user->delete();
+    }
+
 }

@@ -23,4 +23,9 @@ class AvaliacaoRepositoryEloquent implements IAvaliacaoInterface {
 
         return $avaliacao;
     }
+
+        public function destroy(Avaliacao $avaliacao): void {
+        $avaliacao->delete();
+    }
+
 }

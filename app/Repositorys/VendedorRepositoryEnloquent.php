@@ -17,11 +17,18 @@ class VendedorRepositoryEnloquent implements IVendedorInterface {
         return $id->load('produtos');
     }
 
-        public function update(int $id, array $dados): Vendedor{
+    public function update(int $id, array $dados): Vendedor{
         $vendedor = Vendedor::findOrFail($id);
 
         $vendedor->update($dados);
 
         return $vendedor;
     }
+
+        public function destroy(Vendedor $vendedor): void {
+        $vendedor->delete();
+    }
+
+
+
 }

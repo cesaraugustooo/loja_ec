@@ -27,4 +27,9 @@ class PedidoRepositoryEloquent implements IPedidoInterface {
     {
         return Pedido::where('user_id', $user_id)->with('produto.vendedor')->paginate(5);
     }
+
+        public function destroy(Pedido $pedido): void {
+        $pedido->delete();
+    }
+
 }

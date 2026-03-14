@@ -24,4 +24,9 @@ class VendaRepositoryEloquent implements IVendaInterface {
 
         return $venda;
     }
+
+        public function destroy(Venda $venda): void {
+        $venda->delete();
+    }
+
 }
