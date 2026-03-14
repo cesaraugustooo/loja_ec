@@ -12,4 +12,6 @@ interface IAvaliacaoInterface {
     public function view($id): Avaliacao;
 
     public function update(int $id, array $dados): Avaliacao;
+
+    public function destroy(Avaliacao $avaliacao): void;
 }

@@ -10,4 +10,6 @@ interface IVendedorInterface {
     public function view($id): Vendedor;
 
     public function update(int $id, array $dados): Vendedor;
+
+    public function destroy(Vendedor $vendedor): void;
 }

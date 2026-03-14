@@ -14,4 +14,6 @@ interface IPedidoInterface {
     public function update($id, $dados): Pedido;
 
     public function meusPedidos($user_id);
+
+    public function destroy(Pedido $pedido): void;
 }

@@ -11,4 +11,6 @@ interface ICategoriaInterface {
     public function view($id): Categoria;
 
     public function update(int $id, array $dados): Categoria;
+
+    public function destroy(Categoria $categoria): void;
 }

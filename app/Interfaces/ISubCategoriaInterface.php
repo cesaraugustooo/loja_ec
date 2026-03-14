@@ -11,4 +11,6 @@ interface ISubCategoriaInterface {
     public function view($id): Sub_categoria;
 
     public function update(int $id, array $dados): Sub_categoria;
+
+    public function destroy(Sub_categoria $sub_categoria): void;
 }
