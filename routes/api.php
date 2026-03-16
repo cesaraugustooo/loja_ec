@@ -8,6 +8,7 @@ require base_path('routes/auth/auth.php');
 require base_path('routes/vendedores/vendedores.php');
 require base_path('routes/produtos/produtos.php');
 require base_path('routes/pedidos/pedidos.php');
+require base_path('routes/avaliacoes/avaliacoes.php');
 
 Route::get('/user', function (Request $request) {
     return $request->user();

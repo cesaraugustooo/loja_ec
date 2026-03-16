@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AvaliacaoRequest extends FormRequest
+class UpdateAvaliacaoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,7 @@ class AvaliacaoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "nota" => "required|int|min:1|max:5",
-            "produtos_id" => "required|int|exists:produtos,id",
+            "nota" => "sometimes|required|integer|min:1|max:5",
         ];
     }
 }
