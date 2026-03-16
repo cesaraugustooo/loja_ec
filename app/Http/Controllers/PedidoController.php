@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PedidoRequest;
+use App\Http\Requests\UpdatePedido;
 use App\Services\PedidoService;
+use App\Models\Pedido;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PedidoController extends Controller
 {
+    use AuthorizesRequests;
+
     public function store(PedidoRequest $request, PedidoService $pedidoService){
         $validated = $request->validated();
         $validated['user_id'] = $request->user()->id;
@@ -23,18 +28,10 @@ class PedidoController extends Controller
 
     public function update(UpdatePedido $request, PedidoService $service, Pedido $pedido){
         
-        $this->authorize('update',$pedido);
+        $this->authorize('update', $pedido);
 
-        $pedido = $service->update($pedido,$request->validated());
+        $pedido = $service->update($pedido, $request->validated());
 
-        return response()->json($pedido,200);
-    }
-
-    public function destroy(Pedido $pedido, PedidoService $pedidoService){
-        $this->authorize('destroy',$pedido);
-
-        $pedidoService->destroy($pedido);
-
-        return response()->noContent();
+        return response()->json($pedido, 200);
     }
 }
