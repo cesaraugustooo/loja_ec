@@ -21,6 +21,8 @@ use App\Repositorys\PedidoRepositoryEloquent;
 use App\Repositorys\StripePaymentsRepository;
 use App\Repositorys\VendaRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
+use App\Interfaces\IPagamentoInterface;
+
 
 
 class AppServiceProvider extends ServiceProvider
@@ -39,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IPedidoInterface::class, PedidoRepositoryEloquent::class);
         $this->app->bind(IVendaInterface::class, VendaRepositoryEloquent::class);
         $this->app->bind(InterfacesIGatewayPagamentoInterface::class, StripePaymentsRepository::class);
+        $this->app->bind(IPagamentoInterface::class, PagamentoRepositoryEloquent::class);
     }
 
     /**

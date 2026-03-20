@@ -9,6 +9,7 @@ require base_path('routes/vendedores/vendedores.php');
 require base_path('routes/produtos/produtos.php');
 require base_path('routes/pedidos/pedidos.php');
 require base_path('routes/avaliacoes/avaliacoes.php');
+require base_path('routes/pagamento/pagamento.php');
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -16,11 +17,11 @@ Route::get('/user', function (Request $request) {
 
 // Route::get('/pagamento-teste',[ProdutoController::class, 'teste']);
 
-Route::get('/success',function(){
+Route::get('/success', function () {
     return response()->json(['message' => 'success']);
 })->name('success');
 
 
- Route::get('/cancel',function(){
+Route::get('/cancel', function () {
     return response()->json(['message' => 'cancel']);
- })->name('cancel');
+})->name('cancel');
