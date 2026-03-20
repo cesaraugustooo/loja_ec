@@ -28,7 +28,4 @@ class VendedorRepositoryEnloquent implements IVendedorInterface {
         public function destroy(Vendedor $vendedor): void {
         $vendedor->delete();
     }
-
-
-
 }
