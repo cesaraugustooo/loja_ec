@@ -5,10 +5,11 @@ namespace App\Repositorys;
 use App\Interfaces\IVendedorInterface;
 use App\Models\Vendedor;
 
-class VendedorRepositoryEnloquent implements IVendedorInterface {
+class VendedorRepositoryEnloquent implements IVendedorInterface
+{
 
     public function create($dados): Vendedor
-    {   
+    {
         return Vendedor::create($dados);;
     }
 
@@ -17,15 +18,15 @@ class VendedorRepositoryEnloquent implements IVendedorInterface {
         return $id->load('produtos');
     }
 
-    public function update(int $id, array $dados): Vendedor{
-        $vendedor = Vendedor::findOrFail($id);
-
+    public function update(Vendedor $vendedor, array $dados): Vendedor
+    {
         $vendedor->update($dados);
 
         return $vendedor;
     }
 
-        public function destroy(Vendedor $vendedor): void {
+    public function destroy(Vendedor $vendedor): void
+    {
         $vendedor->delete();
     }
 }

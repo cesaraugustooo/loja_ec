@@ -5,10 +5,11 @@ namespace App\Repositorys;
 use App\Interfaces\IVendaInterface;
 use App\Models\Venda;
 
-class VendaRepositoryEloquent implements IVendaInterface {
+class VendaRepositoryEloquent implements IVendaInterface
+{
 
     public function create($dados): Venda
-    {   
+    {
         return Venda::create($dados);;
     }
 
@@ -17,16 +18,15 @@ class VendaRepositoryEloquent implements IVendaInterface {
         return Venda::find($id);
     }
 
-        public function update(int $id, array $dados): Venda{
-        $venda = Venda::findOrFail($id);
-
+    public function update(Venda $venda, array $dados): Venda
+    {
         $venda->update($dados);
 
         return $venda;
     }
 
-        public function destroy(Venda $venda): void {
+    public function destroy(Venda $venda): void
+    {
         $venda->delete();
     }
-
 }

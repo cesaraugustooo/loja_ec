@@ -6,11 +6,15 @@ use App\Http\Requests\VendedorRequest;
 use App\Models\Vendedor;
 use App\Repositorys\VendedorRepositoryEnloquent;
 use App\Services\VendedorService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class VendedorController extends Controller
 {
-    public function store(VendedorRequest $request, VendedorService $vendedorService){
+    use AuthorizesRequests;
+
+    public function store(VendedorRequest $request, VendedorService $vendedorService)
+    {
         $user_id = $request->user()->id;
 
         $dados = $request->validated();
@@ -22,27 +26,29 @@ class VendedorController extends Controller
         return response()->json($vendedor);
     }
 
-    public function view(Vendedor $vendedor, VendedorRepositoryEnloquent $vendedorService) {
+    public function view(Vendedor $vendedor, VendedorRepositoryEnloquent $vendedorService)
+    {
         $vendedorResponse = $vendedorService->view($vendedor);
 
         return response()->json($vendedorResponse);
     }
 
-    public function update(VendedorRequest $request, VendedorService $service, Vendedor $vendedor){
-        
-        $this->authorize('update',$vendedor);
+    public function update(VendedorRequest $request, VendedorService $service, Vendedor $vendedor)
+    {
 
-        $vendedor = $service->update($vendedor,$request->validated());
+        $this->authorize('update', $vendedor);
 
-        return response()->json($vendedor,200);
+        $vendedor = $service->atualizar($vendedor, $request->validated());
+
+        return response()->json($vendedor, 200);
     }
 
-        public function destroy(Vendedor $vendedor, VendedorService $vendedorService){
-        $this->authorize('destroy',$vendedor);
+    //     public function destroy(Vendedor $vendedor, VendedorService $vendedorService){
+    //     $this->authorize('destroy',$vendedor);
 
-        $vendedorService->destroy($vendedor);
+    //     $vendedorService->destroy($vendedor);
 
-        return response()->noContent();
-    }
+    //     return response()->noContent();
+    // }
 
 }

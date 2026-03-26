@@ -5,11 +5,13 @@ namespace App\Interfaces;
 use App\Models\Vendedor;
 use Ramsey\Collection\Collection;
 
-interface IVendedorInterface {
+interface IVendedorInterface
+{
     public function create($dados): Vendedor;
+
     public function view($id): Vendedor;
 
-    public function update(int $id, array $dados): Vendedor;
+    public function update(Vendedor $vendedor, array $dados): Vendedor;
 
     public function destroy(Vendedor $vendedor): void;
 }
