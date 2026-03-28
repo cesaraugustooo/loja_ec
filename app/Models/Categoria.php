@@ -11,11 +11,13 @@ class Categoria extends Model
 
     public $fillable = ['nome', 'produtos_id'];
 
-    public function sub_categoria(){
+    public function sub_categoria()
+    {
         return $this->hasMany(Sub_categoria::class);
     }
 
-    public function produtos(){
-        return $this->belongsTo(Produtos::class);
+    public function produtos()
+    {
+        return $this->belongsTo(produto::class);
     }
 }
