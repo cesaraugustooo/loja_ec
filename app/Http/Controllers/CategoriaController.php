@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 class CategoriaController extends Controller
 {
     use AuthorizesRequests;
-    public function index() {}
-
+     public function index(CategoriaService $services) {
+        return response()->json($services->listar(), 200);
+    }
     public function store (CategoriaRequest $request, CategoriaService $service)
     {
         $validated = $request->validated();
@@ -25,7 +26,7 @@ class CategoriaController extends Controller
 
     public function view(Categoria $categoria, CategoriaService $service)
     {
-        return response()->json($categoria->load(['nome']), 200);
+        return response()->json($categoria->load(['categoria']), 200);
     }
 
     public function update(CategoriaRequest $request, CategoriaService $service, Categoria $categoria)
@@ -37,4 +38,12 @@ class CategoriaController extends Controller
 
         return response()->json($categoria, 200);
     }
+    public function destroy(Categoria $categoria, CategoriaService $service)
+{
+    $this->authorize('delete', $categoria);
+
+    $service->deletar($categoria);
+
+    return response()->json([], 204);
+}
 }
