@@ -9,7 +9,7 @@ class CategoriaRepositoryEloquent implements ICategoriaInterface
 {
     public function index()
     {
-        return Categoria::paginate(10);
+        return Categoria::with('sub_categoria')->paginate(10);
     }
 
     public function create($dados): Categoria
