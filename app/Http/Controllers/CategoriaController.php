@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoriaRequest;
@@ -11,13 +12,13 @@ use Illuminate\Http\Request;
 class CategoriaController extends Controller
 {
     use AuthorizesRequests;
-     public function index(CategoriaService $services) {
+    public function index(CategoriaService $services)
+    {
         return response()->json($services->listar(), 200);
     }
-    public function store (CategoriaRequest $request, CategoriaService $service)
+    public function store(CategoriaRequest $request, CategoriaService $service)
     {
         $validated = $request->validated();
-        $validated = ['user_id'] = $request->user()->id;
 
         $categoria = $service->create($validated);
 
@@ -39,11 +40,11 @@ class CategoriaController extends Controller
         return response()->json($categoria, 200);
     }
     public function destroy(Categoria $categoria, CategoriaService $service)
-{
-    $this->authorize('delete', $categoria);
+    {
+        $this->authorize('delete', $categoria);
 
-    $service->deletar($categoria);
+        $service->deletar($categoria);
 
-    return response()->json([], 204);
-}
+        return response()->json([], 204);
+    }
 }
