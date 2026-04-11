@@ -11,6 +11,7 @@ require base_path('routes/pedidos/pedidos.php');
 require base_path('routes/avaliacoes/avaliacoes.php');
 require base_path('routes/pagamento/pagamento.php');
 require base_path('routes/categoria/categoria.php');
+require base_path('routes/sub_categoria/sub_categoria.php');
 
 Route::get('/user', function (Request $request) {
     return $request->user();

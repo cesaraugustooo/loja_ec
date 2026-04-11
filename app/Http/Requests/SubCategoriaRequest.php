@@ -23,7 +23,7 @@ class SubCategoriaRequest extends FormRequest
     {
         return [
             "nome" => "required|string|max:190",
-            "categoria_id" => 'required|integer',
+            "categorias_id" => 'required|integer',
         ];
     }
 }
