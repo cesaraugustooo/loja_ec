@@ -10,5 +10,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put("/produtos/{produto}", [ProdutoController::class, 'update']);
     Route::delete("/produtos/{produto}", [ProdutoController::class, 'destroy']);
 });
-
+Route::get('/produtos', [ProdutoController::class, 'index']);
 Route::get('/produtos/{produto}', [ProdutoController::class, 'view']);

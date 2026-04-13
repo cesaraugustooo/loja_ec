@@ -14,8 +14,8 @@ use Stripe\Stripe;
 class ProdutoController extends Controller
 {
     use AuthorizesRequests;
-    public function index(){
-
+    public function index(Produto $produto, ProdutoService $service) {
+        return response()->json(Produto::all());
     }
     public function store(ProdutoRequest $request, ProdutoService $service){
         $validated = $request->validated();
