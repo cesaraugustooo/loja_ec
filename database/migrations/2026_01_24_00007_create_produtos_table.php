@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('descricao');
             $table->float('preco');
             $table->integer('estoque');
+            $table->string('imagem');
             $table->foreignId('vendedor_id')->constrained('vendedores');
             $table->foreignId('sub_categorias_id')->constrained('sub-categorias');
             $table->softDeletes();
