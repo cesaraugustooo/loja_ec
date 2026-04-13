@@ -26,6 +26,7 @@ class ProdutoRequest extends FormRequest
             "descricao" => "required|string|max:255",
             "preco" => "required|numeric",
             "estoque" => "required|int",
+            "imagem" => "required|string",
             "sub_categorias_id" => "required|int|exists:sub-categorias,id"
         ];
     }
