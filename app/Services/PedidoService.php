@@ -2,30 +2,45 @@
 
 namespace App\Services;
 
-use App\Interfaces\IGatewayPagamentoInterface as InterfacesIGatewayPagamentoInterface;
+use App\Interfaces\IGatewayPagamentoInterface;
+use App\Interfaces\IPagamentoInterface;
 use App\Interfaces\IPedidoInterface;
 use App\Interfaces\IProdutoInterface;
-use IGatewayPagamentoInterface;
 
-class PedidoService {
+class PedidoService
+{
     public function __construct(
-        private IPedidoInterface $pedidoRepository,
-        private IProdutoInterface $produtoRepository,
-        private InterfacesIGatewayPagamentoInterface $gatewayPagamento
+        private readonly IPedidoInterface $pedidoRepository,
+        private readonly IProdutoInterface $produtoRepository,
+        private readonly IGatewayPagamentoInterface $gatewayPagamento,
+        private readonly IPagamentoInterface $pagamentoRepository
     ) {}
 
-    public function create($dados) {
+    public function create($dados)
+    {
         $produto = $this->produtoRepository->view($dados['produtos_id']);
         $dados['preco'] = $produto->preco * $dados['quantidade'];
 
         $pedido = $this->pedidoRepository->create($dados);
 
-        $url = $this->gatewayPagamento->setPagamento($pedido,$produto);
+        $pagamento = $this->pagamentoRepository->create([
+            'valor' => $dados['preco'],
+            'status' => 'pendente',
+            'transaction_id' => 'aguardando', // Será atualizado pelo Webhook
+            'pedidos_id' => $pedido->id
+        ]);
 
-        return $url;
+        $stripeSession = $this->gatewayPagamento->setPagamento($pedido, $produto, $pagamento);
+
+        $this->pagamentoRepository->update($pagamento->id, [
+            'checkout_id' => $stripeSession->id
+        ]);
+
+        return $stripeSession->url;
     }
 
-    public function view($id) {
+    public function view($id)
+    {
         return $this->pedidoRepository->view($id);
     }
 
@@ -34,7 +49,8 @@ class PedidoService {
         return $this->pedidoRepository->update($id, $dados);
     }
 
-    public function meusPedidos($user_id){
+    public function meusPedidos($user_id)
+    {
         return $this->pedidoRepository->meusPedidos($user_id);
     }
 }

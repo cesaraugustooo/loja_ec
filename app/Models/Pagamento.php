@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pagamento extends Model
 {
-    protected $fillable = ['valor', 'status', 'transaction_id', 'pedidos_id'];
+    protected $fillable = ['valor', 'status', 'transaction_id', 'checkout_id', 'pedidos_id'];
 }

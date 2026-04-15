@@ -22,8 +22,7 @@ use App\Repositorys\StripePaymentsRepository;
 use App\Repositorys\VendaRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 use App\Interfaces\IPagamentoInterface;
-
-
+use App\Repositorys\PagamentoRepositoryEloquent;
 
 class AppServiceProvider extends ServiceProvider
 {

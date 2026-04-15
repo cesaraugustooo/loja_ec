@@ -6,4 +6,5 @@ use App\Models\Pagamento;
 
 interface IPagamentoInterface {
     public function create($data): Pagamento ;
+    public function update(int $id, array $data): bool;
 }

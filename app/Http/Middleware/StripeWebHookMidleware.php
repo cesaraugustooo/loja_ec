@@ -25,7 +25,10 @@ class StripeWebHookMidleware
             $event = Webhook::constructEvent($request->getContent(), $request->header('Stripe-Signature'), env("SECRET_PAYMENT_WEBHOOK"));
 
             $request->merge([
-                'hookMetadata' => $event->data->object->metadata
+                'hookMetadata' => $event->data->object->metadata,
+                'amountWebHook' => $event->data->object->amount,
+                'paymentIntent' => $event->data->object->payment_intent ?? null,
+                'stripeId' => $event->data->object->id
             ]);
 
             return $next($request);

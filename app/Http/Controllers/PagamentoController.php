@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PagamentoService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Services\PagamentoServive;
-use Stripe\Webhook;
 
 class PagamentoController extends Controller
 {
-    public function create(Request $request)
+    public function create(Request $request, PagamentoService $pagamentoService)
     {
-        Log::info("Log de Stripe", ["request => $request->hookMetadata"]);
-        return $request;
+        $pagamentoId = $request->hookMetadata['pagamento_id'] ?? null;
+
+        if ($pagamentoId) {
+            $pagamentoService->confirmPayment(
+                (int) $pagamentoId,
+                (string) $request->paymentIntent
+            );
+        }
+
+        return response()->json(['status' => 'success']);
     }
 }

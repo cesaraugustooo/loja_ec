@@ -3,18 +3,18 @@
 namespace App\Repositorys;
 
 use App\Interfaces\IGatewayPagamentoInterface;
+use App\Models\Pagamento;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 
 class StripePaymentsRepository implements IGatewayPagamentoInterface
 {
-    private $api_key;
-
     public function __construct() {}
 
-    public function setPagamento($pedido, $produto): string
+    public function setPagamento($pedido, $produto, Pagamento $pagamento): object
     {
         Stripe::setApiKey(config("services.stripe.secret"));
+        
         $session = Session::create([
             'line_items' => [
                 [
@@ -31,14 +31,21 @@ class StripePaymentsRepository implements IGatewayPagamentoInterface
             'mode' => 'payment',
             'payment_intent_data' => [
                 'metadata' => [
+                    'pagamento_id' => $pagamento->id,
+                    'pedido_id' => $pedido->id,
                     'produto_id' => $produto->id,
-                    'pedido_id' => $pedido->id
                 ],
+            ],
+            'metadata' => [
+                'pagamento_id' => $pagamento->id,
             ],
             'success_url' => route('success'),
             'cancel_url' => route('cancel')
         ]);
 
-        return $session->url;
+        return (object) [
+            'url' => $session->url,
+            'id' => $session->id
+        ];
     }
 }
