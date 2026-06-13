@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProdutoController;
+use App\Models\Vendedor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,13 @@ require base_path('routes/categoria/categoria.php');
 require base_path('routes/sub_categoria/sub_categoria.php');
 
 Route::get('/user', function (Request $request) {
-    return $request->user();
+    $user = $request->user();
+    $isVendedor = Vendedor::where('user_id', $user['id'])->first();
+
+    if (!$isVendedor) $user['is_vendedor'] = false;
+    else $user['is_vendedor'] = true;
+
+    return $user;
 })->middleware('auth:sanctum');
 
 // Route::get('/pagamento-teste',[ProdutoController::class, 'teste']);
